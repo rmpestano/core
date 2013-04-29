@@ -8,12 +8,15 @@ package org.jboss.forge.ui.impl;
 
 import java.util.concurrent.Callable;
 
+import javax.enterprise.inject.Vetoed;
+
 import org.jboss.forge.container.util.Callables;
 import org.jboss.forge.ui.input.UISelectOne;
 
 /**
  * @author <a href="mailto:lincolnbaxter@gmail.com">Lincoln Baxter, III</a>
  */
+@Vetoed
 public class UISelectOneImpl<VALUETYPE> extends UISelectInputComponentBase<UISelectOne<VALUETYPE>, VALUETYPE> implements
          UISelectOne<VALUETYPE>
 {

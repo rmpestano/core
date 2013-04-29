@@ -8,12 +8,15 @@ package org.jboss.forge.ui.impl;
 
 import java.util.concurrent.Callable;
 
+import javax.enterprise.inject.Vetoed;
+
 import org.jboss.forge.container.util.Callables;
 import org.jboss.forge.ui.input.UISelectMany;
 
 /**
  * @author <a href="mailto:lincolnbaxter@gmail.com">Lincoln Baxter, III</a>
  */
+@Vetoed
 public class UISelectManyImpl<VALUETYPE> extends UISelectInputComponentBase<UISelectMany<VALUETYPE>, VALUETYPE>
          implements
          UISelectMany<VALUETYPE>
