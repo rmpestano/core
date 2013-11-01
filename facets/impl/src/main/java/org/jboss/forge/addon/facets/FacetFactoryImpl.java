@@ -15,11 +15,10 @@ import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.inject.Inject;
-
 import org.jboss.forge.addon.facets.constraints.FacetConstraint;
 import org.jboss.forge.addon.facets.constraints.FacetInspector;
 import org.jboss.forge.furnace.addons.AddonRegistry;
+import org.jboss.forge.furnace.container.simple.lifecycle.SimpleContainer;
 import org.jboss.forge.furnace.services.Imported;
 import org.jboss.forge.furnace.util.Assert;
 import org.jboss.forge.furnace.util.Predicate;
@@ -31,8 +30,12 @@ public class FacetFactoryImpl implements FacetFactory
 {
    private static final Logger log = Logger.getLogger(FacetFactoryImpl.class.getName());
 
-   @Inject
-   private AddonRegistry registry;
+   private final AddonRegistry registry;
+
+   public FacetFactoryImpl()
+   {
+      this.registry = SimpleContainer.getFurnace(getClass().getClassLoader()).getAddonRegistry();
+   }
 
    @Override
    public <FACETEDTYPE extends Faceted<?>, FACETTYPE extends Facet<FACETEDTYPE>> FACETTYPE create(
