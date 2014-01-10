@@ -35,7 +35,7 @@ public class MethodValidatorTest
    {
       ForgeArchive archive = ShrinkWrap
                .create(ForgeArchive.class)
-               .addClass(ManagedExportedObject.class)
+               .addClass(ManagedObject.class)
                .addBeansXML()
                .addAsAddonDependencies(
                         AddonDependencyEntry.create("org.jboss.forge.addon:bean-validation"),
@@ -45,7 +45,7 @@ public class MethodValidatorTest
    }
 
    @Inject
-   private ManagedExportedObject exportedObject;
+   private ManagedObject exportedObject;
 
    @Test
    public void testInjection() throws Exception

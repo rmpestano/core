@@ -9,14 +9,11 @@ package org.jboss.forge.addon.validation;
 
 import javax.validation.constraints.NotNull;
 
-import org.jboss.forge.furnace.services.Exported;
-
 /**
  * 
  * @author <a href="ggastald@redhat.com">George Gastaldi</a>
  */
-@Exported
-public class ManagedExportedObject
+public class ManagedObject
 {
    public String sayHello(@NotNull String name)
    {

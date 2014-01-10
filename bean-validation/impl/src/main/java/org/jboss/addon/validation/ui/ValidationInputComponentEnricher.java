@@ -32,6 +32,6 @@ public class ValidationInputComponentEnricher implements InputComponentInjection
    {
       Class<?> beanType = injectionPoint.getBean().getBeanClass();
       UIValidationAdapter adapter = new UIValidationAdapter(validator, input, (Class<UICommand>) beanType);
-      input.setValidator(adapter);
+      input.addValidator(adapter);
    }
 }

@@ -10,21 +10,16 @@ package org.jboss.forge.addon.validation.ui;
 import java.util.List;
 
 import javax.inject.Inject;
-import javax.validation.constraints.Size;
 
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
-import org.jboss.forge.addon.ui.context.AbstractUIContext;
-import org.jboss.forge.addon.ui.context.AbstractUIValidationContext;
-import org.jboss.forge.addon.ui.context.UIContext;
-import org.jboss.forge.addon.ui.context.UISelection;
-import org.jboss.forge.addon.ui.input.UIInput;
-import org.jboss.forge.addon.ui.metadata.WithAttributes;
-import org.jboss.forge.addon.ui.util.Selections;
+import org.jboss.forge.addon.ui.controller.CommandController;
+import org.jboss.forge.addon.ui.output.UIMessage;
 import org.jboss.forge.arquillian.AddonDependency;
 import org.jboss.forge.arquillian.Dependencies;
 import org.jboss.forge.arquillian.archive.ForgeArchive;
 import org.jboss.forge.furnace.repositories.AddonDependencyEntry;
+import org.jboss.forge.ui.test.UITestHarness;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.junit.Assert;
 import org.junit.Test;
@@ -39,15 +34,16 @@ public class ValidationUITest
 {
    @Deployment
    @Dependencies({ @AddonDependency(name = "org.jboss.forge.addon:bean-validation"),
-            @AddonDependency(name = "org.jboss.forge.addon:ui"),
+            @AddonDependency(name = "org.jboss.forge.addon:ui-test-harness"),
             @AddonDependency(name = "org.jboss.forge.furnace.container:cdi") })
    public static ForgeArchive getDeployment()
    {
       ForgeArchive archive = ShrinkWrap
                .create(ForgeArchive.class)
                .addBeansXML()
+               .addClass(ValidationCommand.class)
                .addAsAddonDependencies(
-                        AddonDependencyEntry.create("org.jboss.forge.addon:ui"),
+                        AddonDependencyEntry.create("org.jboss.forge.addon:ui-test-harness"),
                         AddonDependencyEntry.create("org.jboss.forge.addon:bean-validation"),
                         AddonDependencyEntry.create("org.jboss.forge.furnace.container:cdi"));
 
@@ -55,32 +51,18 @@ public class ValidationUITest
    }
 
    @Inject
-   @WithAttributes(label = "Name", required = true)
-   @Size(min = 1, max = 5)
-   private UIInput<String> name;
+   UITestHarness testHarness;
 
    @Test
-   public void testValidation()
+   public void testValidation() throws Exception
    {
-      name.setValue("A very long string");
-      final UIContext uiContext = new AbstractUIContext()
+      try (CommandController controller = testHarness.createCommandController(ValidationCommand.class))
       {
-         @Override
-         public <SELECTIONTYPE> UISelection<SELECTIONTYPE> getInitialSelection()
-         {
-            return Selections.emptySelection();
-         }
-      };
-      AbstractUIValidationContext validationContext = new AbstractUIValidationContext()
-      {
-         @Override
-         public UIContext getUIContext()
-         {
-            return uiContext;
-         }
-      };
-      name.validate(validationContext);
-      List<String> errors = validationContext.getErrors();
-      Assert.assertFalse("An error should have been captured", errors.isEmpty());
+         controller.initialize();
+         controller.setValueFor("name", "A Very Long String");
+         Assert.assertFalse("Controller should not be valid", controller.isValid());
+         List<UIMessage> messages = controller.validate();
+         Assert.assertFalse("An error should have been captured", messages.isEmpty());
+      }
    }
 }
