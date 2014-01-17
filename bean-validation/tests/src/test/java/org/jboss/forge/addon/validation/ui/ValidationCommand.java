@@ -10,7 +10,8 @@ package org.jboss.forge.addon.validation.ui;
 import javax.inject.Inject;
 import javax.validation.constraints.Size;
 
-import org.jboss.forge.addon.ui.AbstractUICommand;
+import org.hibernate.validator.valuehandling.UnwrapValidatedValue;
+import org.jboss.forge.addon.ui.command.AbstractUICommand;
 import org.jboss.forge.addon.ui.context.UIBuilder;
 import org.jboss.forge.addon.ui.context.UIExecutionContext;
 import org.jboss.forge.addon.ui.input.UIInput;
@@ -27,6 +28,7 @@ public class ValidationCommand extends AbstractUICommand
    @Inject
    @WithAttributes(label = "Name", required = true)
    @Size(min = 1, max = 5)
+   @UnwrapValidatedValue
    private UIInput<String> name;
 
    @Override

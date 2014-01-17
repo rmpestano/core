@@ -12,11 +12,11 @@ import java.util.Set;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validator;
 
-import org.jboss.forge.addon.ui.UICommand;
-import org.jboss.forge.addon.ui.UIValidator;
+import org.jboss.forge.addon.ui.command.UICommand;
 import org.jboss.forge.addon.ui.context.UIValidationContext;
 import org.jboss.forge.addon.ui.input.InputComponent;
 import org.jboss.forge.addon.ui.util.InputComponents;
+import org.jboss.forge.addon.ui.validate.UIValidator;
 
 /**
  * A {@link UIValidator} adapter that validates using Bean Validation 1.1

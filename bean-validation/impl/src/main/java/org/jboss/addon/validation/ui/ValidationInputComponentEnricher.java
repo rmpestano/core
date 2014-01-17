@@ -11,10 +11,10 @@ import javax.enterprise.inject.spi.InjectionPoint;
 import javax.inject.Inject;
 import javax.validation.Validator;
 
-import org.jboss.forge.addon.ui.UICommand;
-import org.jboss.forge.addon.ui.UIValidator;
+import org.jboss.forge.addon.ui.command.UICommand;
 import org.jboss.forge.addon.ui.input.InputComponent;
 import org.jboss.forge.addon.ui.input.InputComponentInjectionEnricher;
+import org.jboss.forge.addon.ui.validate.UIValidator;
 
 /**
  * Enables Bean Validation 1.1 as a {@link UIValidator} object in the {@link InputComponent}
