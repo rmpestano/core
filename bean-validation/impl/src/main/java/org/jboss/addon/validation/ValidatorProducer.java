@@ -12,7 +12,7 @@ import javax.inject.Singleton;
 import javax.validation.Validation;
 import javax.validation.Validator;
 
-import org.hibernate.validator.internal.metadata.provider.AnnotationMetaDataProvider;
+import org.hibernate.validator.HibernateValidator;
 
 /**
  * 
@@ -24,7 +24,10 @@ public class ValidatorProducer
    @Singleton
    public Validator createValidator()
    {
-      Validator validator = Validation.byProvider(AnnotationMetaDataProvider.class).configure().buildValidatorFactory()
+      Validator validator = Validation.byProvider(HibernateValidator.class)
+               .configure()
+               .addValidatedValueHandler(new InputComponentValueUnwrapper())
+               .buildValidatorFactory()
                .getValidator();
       return validator;
    }
