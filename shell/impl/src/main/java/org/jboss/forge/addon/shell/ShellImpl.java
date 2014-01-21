@@ -149,6 +149,7 @@ public class ShellImpl implements Shell, UIRuntime
    {
       Assert.notNull(resource, "Current resource should not be null");
       this.currentResource = resource;
+      updatePrompt();
 
       Resource<?> temp = resource;
       while (!(temp instanceof DirectoryResource) && temp != null)
@@ -159,7 +160,6 @@ public class ShellImpl implements Shell, UIRuntime
       {
          console.getAeshContext().setCurrentWorkingDirectory(((DirectoryResource) temp).getUnderlyingResourceObject());
       }
-      updatePrompt();
    }
 
    @Override
