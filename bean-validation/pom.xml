@@ -20,7 +20,7 @@
 	</modules>
 
 	<properties>
-		<version.hibernate.validator>5.1.0.Beta1</version.hibernate.validator>
+		<version.hibernate.validator>5.1.0-SNAPSHOT</version.hibernate.validator>
 	</properties>
 
 	<dependencyManagement>
