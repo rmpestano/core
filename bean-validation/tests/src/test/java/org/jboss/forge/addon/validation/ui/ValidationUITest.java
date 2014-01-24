@@ -62,7 +62,8 @@ public class ValidationUITest
          controller.setValueFor("name", "A Very Long String");
          Assert.assertFalse("Controller should not be valid", controller.isValid());
          List<UIMessage> messages = controller.validate();
-         Assert.assertFalse("An error should have been captured", messages.isEmpty());
+         Assert.assertEquals("An error should have been captured", 1, messages.size());
+         Assert.assertEquals("size must be between 1 and 5", messages.get(0).getDescription());
       }
    }
 }

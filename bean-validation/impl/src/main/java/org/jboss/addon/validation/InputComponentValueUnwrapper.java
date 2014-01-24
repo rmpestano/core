@@ -10,7 +10,7 @@ package org.jboss.addon.validation;
 import java.lang.reflect.Type;
 
 import org.hibernate.validator.spi.valuehandling.ValidatedValueUnwrapper;
-import org.jboss.forge.addon.ui.input.UIInput;
+import org.jboss.forge.addon.ui.input.InputComponent;
 
 import com.fasterxml.classmate.ResolvedType;
 import com.fasterxml.classmate.TypeResolver;
@@ -19,12 +19,12 @@ import com.fasterxml.classmate.TypeResolver;
  * 
  * @author <a href="ggastald@redhat.com">George Gastaldi</a>
  */
-public class InputComponentValueUnwrapper extends ValidatedValueUnwrapper<UIInput<?>>
+public class InputComponentValueUnwrapper extends ValidatedValueUnwrapper<InputComponent<?,?>>
 {
    private final TypeResolver typeResolver = new TypeResolver();
 
    @Override
-   public Object handleValidatedValue(UIInput<?> value)
+   public Object handleValidatedValue(InputComponent<?,?> value)
    {
       return value.getValue();
    }
@@ -33,7 +33,7 @@ public class InputComponentValueUnwrapper extends ValidatedValueUnwrapper<UIInpu
    public Type getValidatedValueType(Type valueType)
    {
       ResolvedType resolvedType = typeResolver.resolve(valueType);
-      return resolvedType.typeParametersFor(UIInput.class).get(0).getErasedType();
+      return resolvedType.typeParametersFor(InputComponent.class).get(1).getErasedType();
    }
 
 }
