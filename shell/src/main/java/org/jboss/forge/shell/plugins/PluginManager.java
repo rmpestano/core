@@ -7,14 +7,6 @@
 
 package org.jboss.forge.shell.plugins;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.UUID;
-
-import javax.enterprise.event.Event;
-import javax.inject.Inject;
-
 import org.apache.maven.model.Model;
 import org.jboss.forge.ForgeEnvironment;
 import org.jboss.forge.maven.MavenCoreFacet;
@@ -43,6 +35,13 @@ import org.jboss.forge.shell.ShellMessages;
 import org.jboss.forge.shell.events.PluginInstalled;
 import org.jboss.forge.shell.events.PluginRemoved;
 import org.jboss.forge.shell.exceptions.Abort;
+
+import javax.enterprise.event.Event;
+import javax.inject.Inject;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.UUID;
 
 /**
  * Manages the installation and removal of plugins
@@ -210,7 +209,7 @@ public class PluginManager
    /**
     * This method will try its best to find the plugin coordinates for a given project
     * 
-    * @param project
+    * @param rootProject
     * @return
     */
    Project findPluginProject(final Project rootProject, final Dependency coordinates)
@@ -344,7 +343,12 @@ public class PluginManager
 
       moduleXml.setContents(XMLParser.toXMLString(module));
 
-      if (!dependenciesAsResourceRoot)
+      if(hasPluginDependencies(project)){
+           addPluginDependencies(project,dependencies);
+      }
+
+
+       if (!dependenciesAsResourceRoot)
       {
          createDependenciesModule(project, dep);
       }
@@ -546,5 +550,70 @@ public class PluginManager
       dir = dir.getOrCreateChildDirectory(dep.getVersion());
       return dir;
    }
+
+    /**
+     * add module dependencies to plugin based on dependencies declared in forge.xml
+     * @param project
+     * @param dependencies
+     */
+    private void addPluginDependencies(Project project, Node dependencies) {
+        FileResource<?> forgeXml = (FileResource<?>) project.getProjectRoot().getChild(
+                "src/main/resources/META-INF/forge.xml");
+        if (forgeXml.exists())
+        {
+            try{
+                Node node = XMLParser.parse(forgeXml.getResourceInputStream());
+                Node pluginDependencies = node.getSingle("dependencies");
+                if(pluginDependencies != null){
+                    for (Node pluginModule : pluginDependencies.getChildren()) {
+                        String name = pluginModule.getAttribute("name");
+                        if(name == null){
+                            continue;//cannot create module without name
+                        }
+
+                        Node module = dependencies.createChild("module").attribute("name", name);
+                        String services = pluginModule.getAttribute("services");
+                        if(services != null){
+                            module.attribute("services", services);
+                        }
+                        String slot = pluginModule.getAttribute("slot");
+                        if(slot != null){
+                            module.attribute("slot", slot);
+                        }
+                    }
+
+                }
+            }catch (ParserException pe){
+                //log ex
+            }
+
+        }
+    }
+
+    /**
+     * verify if forge.xml has dependencies section
+     * @param project
+     * @return
+     */
+    private boolean hasPluginDependencies(final Project project){
+        FileResource<?> forgeXml = (FileResource<?>) project.getProjectRoot().getChild(
+                "src/main/resources/META-INF/forge.xml");
+        if (forgeXml.exists())
+        {
+            try
+            {
+                Node node = XMLParser.parse(forgeXml.getResourceInputStream());
+                return node.getSingle("dependencies") != null;
+            }
+            catch (ParserException e)
+            {
+                return false;
+            }
+        }
+        return false;
+    }
+
+
+
 
 }

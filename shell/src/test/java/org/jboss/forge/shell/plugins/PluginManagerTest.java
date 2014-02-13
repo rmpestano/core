@@ -7,12 +7,6 @@
 
 package org.jboss.forge.shell.plugins;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.net.URL;
-
-import javax.inject.Inject;
-
 import org.jboss.forge.project.Project;
 import org.jboss.forge.project.dependencies.Dependency;
 import org.jboss.forge.project.dependencies.DependencyBuilder;
@@ -23,6 +17,11 @@ import org.jboss.forge.resources.DirectoryResource;
 import org.jboss.forge.test.AbstractShellTest;
 import org.junit.Assert;
 import org.junit.Test;
+
+import javax.inject.Inject;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.net.URL;
 
 public class PluginManagerTest extends AbstractShellTest
 {
@@ -92,4 +91,16 @@ public class PluginManagerTest extends AbstractShellTest
       Assert.assertEquals("module_b_1", facet.getProjectName());
    }
 
+
+   @Test
+   public void shouldCreateModuleUsingPluginDependencies() throws Exception
+   {
+       File singleProjectRoot = new File(getAbsolutePath("plugins"));
+       Assert.assertTrue(singleProjectRoot.isDirectory());
+       DirectoryResource projectResource = resourceFactory.getResourceFrom(singleProjectRoot).reify(
+               DirectoryResource.class);
+       getShell().setCurrentResource(projectResource);
+       getShell().execute("forge source-plugin plugin-with-declared-dependencies");
+       // pluginManager.installFromProject(projectResource,DependencyBuilder.create().setArtifactId("single").setGroupId("test").setVersion("1.0.0.Final"));
+   }
 }
