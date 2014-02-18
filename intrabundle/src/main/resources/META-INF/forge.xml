@@ -1,5 +1,0 @@
-<forge>
-     <dependencies>
-         <module name="org.eclipse.javaparser" />
-      </dependencies>
-</forge>
