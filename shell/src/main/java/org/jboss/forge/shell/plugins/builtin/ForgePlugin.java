@@ -7,15 +7,6 @@
 
 package org.jboss.forge.shell.plugins.builtin;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-
-import javax.enterprise.event.Event;
-import javax.inject.Inject;
-
 import org.eclipse.jgit.api.CreateBranchCommand.SetupUpstreamMode;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.lib.Ref;
@@ -24,42 +15,27 @@ import org.jboss.forge.env.Configuration;
 import org.jboss.forge.git.GitUtils;
 import org.jboss.forge.parser.java.util.Assert;
 import org.jboss.forge.parser.java.util.Strings;
-import org.jboss.forge.project.dependencies.CompositeDependencyFilter;
-import org.jboss.forge.project.dependencies.Dependency;
-import org.jboss.forge.project.dependencies.DependencyBuilder;
-import org.jboss.forge.project.dependencies.DependencyFilter;
-import org.jboss.forge.project.dependencies.DependencyQuery;
-import org.jboss.forge.project.dependencies.DependencyQueryBuilder;
-import org.jboss.forge.project.dependencies.DependencyRepositoryImpl;
-import org.jboss.forge.project.dependencies.DependencyResolver;
-import org.jboss.forge.project.dependencies.NonSnapshotDependencyFilter;
+import org.jboss.forge.project.dependencies.*;
 import org.jboss.forge.project.facets.DependencyFacet;
 import org.jboss.forge.resources.DependencyResource;
 import org.jboss.forge.resources.DirectoryResource;
 import org.jboss.forge.resources.FileResource;
 import org.jboss.forge.resources.Resource;
-import org.jboss.forge.shell.InstalledPluginRegistry;
-import org.jboss.forge.shell.PluginEntry;
-import org.jboss.forge.shell.PromptType;
-import org.jboss.forge.shell.Shell;
-import org.jboss.forge.shell.ShellColor;
-import org.jboss.forge.shell.ShellMessages;
-import org.jboss.forge.shell.ShellPrompt;
-import org.jboss.forge.shell.Wait;
+import org.jboss.forge.shell.*;
 import org.jboss.forge.shell.events.ReinitializeEnvironment;
 import org.jboss.forge.shell.exceptions.AbortedException;
-import org.jboss.forge.shell.plugins.Alias;
-import org.jboss.forge.shell.plugins.Command;
-import org.jboss.forge.shell.plugins.DefaultCommand;
-import org.jboss.forge.shell.plugins.Help;
-import org.jboss.forge.shell.plugins.Option;
-import org.jboss.forge.shell.plugins.PipeOut;
-import org.jboss.forge.shell.plugins.Plugin;
-import org.jboss.forge.shell.plugins.PluginManager;
-import org.jboss.forge.shell.plugins.Topic;
+import org.jboss.forge.shell.plugins.*;
 import org.jboss.forge.shell.util.Files;
 import org.jboss.forge.shell.util.PluginRef;
 import org.jboss.forge.shell.util.PluginUtil;
+
+import javax.enterprise.event.Event;
+import javax.inject.Inject;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author <a href="mailto:lincolnbaxter@gmail.com">Lincoln Baxter, III</a>
@@ -535,4 +511,28 @@ public class ForgePlugin implements Plugin
       ShellMessages.success(shell, "Forge will now restart to complete the update...");
       System.exit(0);
    }
+
+    @Command(value = "intrabundle-update")
+    public void intrabundleUpdate(final PipeOut out){
+        out.println(ShellColor.YELLOW,"Updating intrabundle plugin");
+        try {
+             List<PluginEntry> intrabundleInstalledPlugins = getIntrabundleInstalledPlugins();
+            for (PluginEntry plugin : intrabundleInstalledPlugins) {
+                removePlugin(plugin.getName()+":"+plugin.getApiVersion()+":"+plugin.getSlot(), out);
+            }
+        } catch (Exception e) {
+            out.println(ShellColor.RED, "problem while intrabundle plugin update:" + e.getMessage() + "\n Make sure you have internet access");
+        }
+    }
+
+    private List<PluginEntry> getIntrabundleInstalledPlugins() {
+        List<PluginEntry> candidates = new ArrayList<PluginEntry>();
+        for (PluginEntry pluginEntry : InstalledPluginRegistry.list()) {
+            if(pluginEntry.getName().equals("br.ufrgs.rmpestano.intrabundle")){
+               candidates.add(pluginEntry);
+            }
+        }
+
+        return candidates;
+    }
 }

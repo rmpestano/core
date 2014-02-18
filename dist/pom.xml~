@@ -410,7 +410,6 @@
      <dependency>
          <groupId>br.ufrgs.rmpestano</groupId>
          <artifactId>intrabundle</artifactId>
-	 <version>0.1</version>
       </dependency>
 
       <dependency>

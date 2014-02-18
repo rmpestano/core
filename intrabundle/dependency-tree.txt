@@ -1,0 +1,174 @@
+[INFO] Scanning for projects...
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building intrabundle 0.1-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.1:tree (default-cli) @ intrabundle ---
+[INFO] br.ufrgs.rmpestano:intrabundle:jar:0.1-SNAPSHOT
+[INFO] +- org.jboss.forge:forge-shell-api:jar:1.4.4.Final:provided
+[INFO] |  +- javax.enterprise:cdi-api:jar:1.0-SP4:provided
+[INFO] |  |  +- org.jboss.spec.javax.interceptor:jboss-interceptors-api_1.1_spec:jar:1.0.0.Beta1:provided
+[INFO] |  |  +- javax.annotation:jsr250-api:jar:1.0:provided
+[INFO] |  |  \- javax.inject:javax.inject:jar:1:provided
+[INFO] |  +- org.jboss.forge:java-parser-api:jar:1.1.7.Final:provided
+[INFO] |  +- org.jboss.forge:forge-parser-xml:jar:1.4.4.Final:provided
+[INFO] |  +- org.jboss.forge:forge-event-bus:jar:1.4.4.Final:provided
+[INFO] |  \- org.jboss.solder:solder-impl:jar:3.1.0.Beta5:provided
+[INFO] |     \- org.jboss.solder:solder-api:jar:3.1.0.Beta5:provided
+[INFO] |        \- org.jboss.solder:solder-logging:jar:3.1.0.Beta5:provided
+[INFO] +- org.jboss.forge:forge-maven-api:jar:1.4.4.Final:provided
+[INFO] |  +- org.apache.maven:maven-core:jar:3.0.3:provided
+[INFO] |  |  +- org.apache.maven:maven-settings:jar:3.0.3:provided
+[INFO] |  |  +- org.apache.maven:maven-settings-builder:jar:3.0.3:provided
+[INFO] |  |  +- org.apache.maven:maven-repository-metadata:jar:3.0.3:provided
+[INFO] |  |  +- org.apache.maven:maven-artifact:jar:3.0.3:provided
+[INFO] |  |  +- org.apache.maven:maven-plugin-api:jar:3.0.3:provided
+[INFO] |  |  +- org.apache.maven:maven-model-builder:jar:3.0.3:provided
+[INFO] |  |  +- org.apache.maven:maven-aether-provider:jar:3.0.3:provided
+[INFO] |  |  |  \- org.sonatype.aether:aether-spi:jar:1.11:provided
+[INFO] |  |  +- org.sonatype.aether:aether-impl:jar:1.11:provided
+[INFO] |  |  +- org.sonatype.aether:aether-api:jar:1.11:provided
+[INFO] |  |  +- org.sonatype.aether:aether-util:jar:1.11:provided
+[INFO] |  |  +- org.sonatype.sisu:sisu-inject-plexus:jar:2.1.1:provided
+[INFO] |  |  |  \- org.sonatype.sisu:sisu-inject-bean:jar:2.1.1:provided
+[INFO] |  |  |     \- org.sonatype.sisu:sisu-guice:jar:no_aop:2.9.4:provided
+[INFO] |  |  +- org.codehaus.plexus:plexus-interpolation:jar:1.14:provided
+[INFO] |  |  +- org.codehaus.plexus:plexus-utils:jar:2.0.6:provided
+[INFO] |  |  +- org.codehaus.plexus:plexus-classworlds:jar:2.4:provided
+[INFO] |  |  +- org.codehaus.plexus:plexus-component-annotations:jar:1.5.5:provided
+[INFO] |  |  \- org.sonatype.plexus:plexus-sec-dispatcher:jar:1.3:provided
+[INFO] |  |     \- org.sonatype.plexus:plexus-cipher:jar:1.4:provided
+[INFO] |  \- org.apache.maven:maven-model:jar:3.0.3:provided
+[INFO] +- org.jboss.forge:forge-javaee-api:jar:1.4.4.Final:provided
+[INFO] |  +- org.jboss.spec:jboss-javaee-6.0:pom:3.0.1.Final:provided
+[INFO] |  |  +- javax.activation:activation:jar:1.1:provided
+[INFO] |  |  +- javax.jws:jsr181-api:jar:1.0-MR1:provided
+[INFO] |  |  +- javax.mail:mail:jar:1.4.4:provided
+[INFO] |  |  +- javax.validation:validation-api:jar:1.0.0.GA:provided
+[INFO] |  |  +- org.hibernate.javax.persistence:hibernate-jpa-2.0-api:jar:1.0.1.Final:provided
+[INFO] |  |  +- org.jboss.spec.javax.annotation:jboss-annotations-api_1.1_spec:jar:1.0.1.Final:provided
+[INFO] |  |  +- org.jboss.spec.javax.ejb:jboss-ejb-api_3.1_spec:jar:1.0.2.Final:provided
+[INFO] |  |  +- org.jboss.spec.javax.el:jboss-el-api_2.2_spec:jar:1.0.1.Final:provided
+[INFO] |  |  +- org.jboss.spec.javax.enterprise.deploy:jboss-jad-api_1.2_spec:jar:1.0.1.Final:provided
+[INFO] |  |  +- org.jboss.spec.javax.faces:jboss-jsf-api_2.1_spec:jar:2.0.2.Final:provided
+[INFO] |  |  +- org.jboss.spec.javax.management.j2ee:jboss-j2eemgmt-api_1.1_spec:jar:1.0.1.Final:provided
+[INFO] |  |  +- org.jboss.spec.javax.resource:jboss-connector-api_1.6_spec:jar:1.0.1.Final:provided
+[INFO] |  |  +- org.jboss.spec.javax.security.jacc:jboss-jacc-api_1.4_spec:jar:1.0.2.Final:provided
+[INFO] |  |  +- org.jboss.spec.javax.security.auth.message:jboss-jaspi-api_1.0_spec:jar:1.0.1.Final:provided
+[INFO] |  |  +- org.jboss.spec.javax.xml.registry:jboss-jaxr-api_1.0_spec:jar:1.0.2.Final:provided
+[INFO] |  |  +- org.jboss.spec.javax.jms:jboss-jms-api_1.1_spec:jar:1.0.1.Final:provided
+[INFO] |  |  +- org.jboss.spec.javax.servlet:jboss-servlet-api_3.0_spec:jar:1.0.1.Final:provided
+[INFO] |  |  +- org.jboss.spec.javax.servlet.jsp:jboss-jsp-api_2.2_spec:jar:1.0.1.Final:provided
+[INFO] |  |  +- org.jboss.spec.javax.servlet.jstl:jboss-jstl-api_1.2_spec:jar:1.0.3.Final:provided
+[INFO] |  |  |  \- xalan:xalan:jar:2.7.1.jbossorg-2:provided
+[INFO] |  |  |     \- xalan:serializer:jar:2.7.1.jbossorg-2:provided
+[INFO] |  |  +- org.jboss.spec.javax.transaction:jboss-transaction-api_1.1_spec:jar:1.0.1.Final:provided
+[INFO] |  |  +- org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_1.1_spec:jar:1.0.1.Final:provided
+[INFO] |  |  +- org.jboss.spec.javax.xml.bind:jboss-jaxb-api_2.2_spec:jar:1.0.4.Final:provided
+[INFO] |  |  +- org.jboss.spec.javax.xml.rpc:jboss-jaxrpc-api_1.1_spec:jar:1.0.1.Final:provided
+[INFO] |  |  +- org.jboss.spec.javax.xml.soap:jboss-saaj-api_1.3_spec:jar:1.0.2.Final:provided
+[INFO] |  |  \- org.jboss.spec.javax.xml.ws:jboss-jaxws-api_2.2_spec:jar:2.0.1.Final:provided
+[INFO] |  \- org.jboss.shrinkwrap.descriptors:shrinkwrap-descriptors-impl:jar:1.1.0-beta-1:provided
+[INFO] |     \- org.jboss.shrinkwrap.descriptors:shrinkwrap-descriptors-spi:jar:1.1.0-beta-1:provided
+[INFO] |        \- org.jboss.shrinkwrap.descriptors:shrinkwrap-descriptors-api:jar:1.1.0-beta-1:provided
+[INFO] +- net.sf.jasperreports:jasperreports:jar:5.1.2:compile
+[INFO] |  +- commons-beanutils:commons-beanutils:jar:1.8.0:compile
+[INFO] |  +- commons-digester:commons-digester:jar:2.1:compile
+[INFO] |  +- commons-logging:commons-logging:jar:1.1.1:compile
+[INFO] |  +- jfree:jcommon:jar:1.0.15:compile
+[INFO] |  +- jfree:jfreechart:jar:1.0.12:compile
+[INFO] |  +- xml-apis:xml-apis:jar:1.3.02:compile
+[INFO] |  +- org.codehaus.castor:castor:jar:1.2:compile
+[INFO] |  +- com.fasterxml.jackson.core:jackson-core:jar:2.0.5:compile
+[INFO] |  +- com.fasterxml.jackson.core:jackson-databind:jar:2.0.5:compile
+[INFO] |  \- com.fasterxml.jackson.core:jackson-annotations:jar:2.0.5:compile
+[INFO] +- commons-collections:commons-collections:jar:3.2.1:compile
+[INFO] +- com.lowagie:itext:jar:2.1.7:compile
+[INFO] |  +- bouncycastle:bcmail-jdk14:jar:138:compile
+[INFO] |  +- bouncycastle:bcprov-jdk14:jar:138:compile
+[INFO] |  \- org.bouncycastle:bctsp-jdk14:jar:1.38:compile
+[INFO] |     +- org.bouncycastle:bcprov-jdk14:jar:1.38:compile
+[INFO] |     \- org.bouncycastle:bcmail-jdk14:jar:1.38:compile
+[INFO] +- org.jboss.forge:forge-test-harness:jar:1.4.4.Final:test
+[INFO] |  +- junit:junit:jar:4.8.1:test
+[INFO] |  +- org.jboss.arquillian.junit:arquillian-junit-container:jar:1.0.0.CR7:test
+[INFO] |  |  +- org.jboss.arquillian.junit:arquillian-junit-core:jar:1.0.0.CR7:test
+[INFO] |  |  +- org.jboss.arquillian.test:arquillian-test-api:jar:1.0.0.CR7:test
+[INFO] |  |  |  \- org.jboss.arquillian.core:arquillian-core-api:jar:1.0.0.CR7:test
+[INFO] |  |  +- org.jboss.arquillian.test:arquillian-test-spi:jar:1.0.0.CR7:test
+[INFO] |  |  |  +- org.jboss.arquillian.core:arquillian-core-spi:jar:1.0.0.CR7:test
+[INFO] |  |  |  \- org.jboss.shrinkwrap:shrinkwrap-api:jar:1.0.0-cr-1:test
+[INFO] |  |  +- org.jboss.arquillian.container:arquillian-container-test-api:jar:1.0.0.CR7:test
+[INFO] |  |  +- org.jboss.arquillian.container:arquillian-container-test-spi:jar:1.0.0.CR7:test
+[INFO] |  |  +- org.jboss.arquillian.core:arquillian-core-impl-base:jar:1.0.0.CR7:test
+[INFO] |  |  +- org.jboss.arquillian.test:arquillian-test-impl-base:jar:1.0.0.CR7:test
+[INFO] |  |  +- org.jboss.arquillian.container:arquillian-container-impl-base:jar:1.0.0.CR7:test
+[INFO] |  |  |  +- org.jboss.arquillian.config:arquillian-config-api:jar:1.0.0.CR7:test
+[INFO] |  |  |  \- org.jboss.arquillian.config:arquillian-config-impl-base:jar:1.0.0.CR7:test
+[INFO] |  |  +- org.jboss.arquillian.container:arquillian-container-test-impl-base:jar:1.0.0.CR7:test
+[INFO] |  |  \- org.jboss.shrinkwrap:shrinkwrap-impl-base:jar:1.0.0-cr-1:test
+[INFO] |  |     \- org.jboss.shrinkwrap:shrinkwrap-spi:jar:1.0.0-cr-1:test
+[INFO] |  +- org.jboss.arquillian.container:arquillian-weld-ee-embedded-1.1:jar:1.0.0.CR3:test
+[INFO] |  |  +- org.jboss.arquillian.container:arquillian-container-spi:jar:1.0.0.CR6:test
+[INFO] |  |  \- org.jboss.arquillian.testenricher:arquillian-testenricher-cdi:jar:1.0.0.CR6:test
+[INFO] |  +- javax.el:el-api:jar:2.2:test
+[INFO] |  +- org.jboss.weld:weld-api:jar:1.1.Beta2:test
+[INFO] |  +- org.slf4j:slf4j-api:jar:1.5.10:test
+[INFO] |  +- org.slf4j:slf4j-log4j12:jar:1.5.10:test
+[INFO] |  +- org.slf4j:slf4j-ext:jar:1.5.10:test
+[INFO] |  +- log4j:log4j:jar:1.2.16:test
+[INFO] |  \- ch.qos.cal10n:cal10n-api:jar:0.7.2:test
+[INFO] +- org.jboss.forge:forge-shell:jar:1.4.4.Final:test
+[INFO] |  +- org.jboss.forge:forge-project-model-maven:jar:1.4.4.Final:test
+[INFO] |  |  +- org.apache.maven:maven-embedder:jar:3.0.3:test
+[INFO] |  |  |  \- commons-cli:commons-cli:jar:1.2:test
+[INFO] |  |  +- org.apache.maven:maven-compat:jar:3.0.3:test
+[INFO] |  |  |  \- org.apache.maven.wagon:wagon-provider-api:jar:1.0-beta-7:test
+[INFO] |  |  +- org.sonatype.aether:aether-connector-wagon:jar:1.11:test
+[INFO] |  |  +- org.apache.maven.wagon:wagon-file:jar:2.0:test
+[INFO] |  |  \- org.apache.maven.wagon:wagon-http-lightweight:jar:2.0:test
+[INFO] |  |     \- org.apache.maven.wagon:wagon-http-shared4:jar:2.0:test
+[INFO] |  |        +- org.jsoup:jsoup:jar:1.6.1:test
+[INFO] |  |        \- commons-io:commons-io:jar:2.0.1:test
+[INFO] |  +- org.jboss.forge:java-parser-impl:jar:1.1.7.Final:test
+[INFO] |  |  +- org.eclipse.tycho:org.eclipse.jdt.core:jar:3.9.1.v20130905-0837:test
+[INFO] |  |  +- org.eclipse.core:org.eclipse.core.resources:jar:3.7.100:test
+[INFO] |  |  |  \- org.eclipse.core:org.eclipse.core.runtime:jar:3.7.0:test
+[INFO] |  |  |     +- org.eclipse.osgi:org.eclipse.osgi:jar:3.7.1:test
+[INFO] |  |  |     +- org.eclipse.core:org.eclipse.core.jobs:jar:3.5.100:test
+[INFO] |  |  |     +- org.eclipse.equinox:org.eclipse.equinox.preferences:jar:3.4.1:test
+[INFO] |  |  |     \- org.eclipse.core:org.eclipse.core.contenttype:jar:3.4.100:test
+[INFO] |  |  \- org.eclipse.text:org.eclipse.text:jar:3.5.101:test
+[INFO] |  |     \- org.eclipse.equinox:org.eclipse.equinox.common:jar:3.6.0:test
+[INFO] |  +- org.jboss.forge:forge-git-tools:jar:1.4.4.Final:test
+[INFO] |  |  \- org.eclipse.jgit:org.eclipse.jgit:jar:2.3.1.201302201838-r:test
+[INFO] |  |     \- com.jcraft:jsch:jar:0.1.46:test
+[INFO] |  +- org.jboss.modules:jboss-modules:jar:1.1.3.GA:test
+[INFO] |  +- org.jboss.weld.se:weld-se-core:jar:1.1.2.Final:test
+[INFO] |  |  \- org.jboss.weld:weld-spi:jar:1.1.Beta2:test
+[INFO] |  +- org.jboss.weld:weld-core:jar:1.1.2.Final:test
+[INFO] |  |  +- org.javassist:javassist:jar:3.14.0-GA:test
+[INFO] |  |  +- com.google.guava:guava:jar:r06:test
+[INFO] |  |  +- org.jboss.interceptor:jboss-interceptor-spi:jar:2.0.0.CR1:test
+[INFO] |  |  \- org.jboss.interceptor:jboss-interceptor-core:jar:2.0.0.CR1:test
+[INFO] |  +- log4j:apache-log4j-extras:jar:1.1:test
+[INFO] |  +- org.jboss.logmanager:jboss-logmanager:jar:1.2.2.GA:test
+[INFO] |  +- org.sonatype.jline:jline:jar:2.5:test
+[INFO] |  +- org.fusesource.jansi:jansi:jar:1.5:test
+[INFO] |  +- org.mvel:mvel2:jar:2.1.3.Final:test
+[INFO] |  +- commons-configuration:commons-configuration:jar:1.7:test
+[INFO] |  |  \- commons-lang:commons-lang:jar:2.6:test
+[INFO] |  +- org.apache.httpcomponents:httpclient:jar:4.0.1:test
+[INFO] |  |  \- org.apache.httpcomponents:httpcore:jar:4.0.1:test
+[INFO] |  +- org.yaml:snakeyaml:jar:1.7:test
+[INFO] |  \- commons-codec:commons-codec:jar:1.6:test
+[INFO] \- org.jboss.forge:forge-javaee-impl:jar:1.4.4.Final:test
+[INFO]    \- org.freemarker:freemarker:jar:2.3.19:test
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 5.347s
+[INFO] Finished at: Fri Feb 07 18:39:06 BRST 2014
+[INFO] Final Memory: 16M/297M
+[INFO] ------------------------------------------------------------------------

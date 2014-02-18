@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: TestBundle
+Bundle-SymbolicName: TestBundleSimbolicName
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: br.ufrgs.rmpestano.activator.Activator
+Export-Package: br.ufrgs.rmpestano.module1,
+br.ufrgs.rmpestano.package2
+Import-Package: br.ufrgs.rmpestano.module3,
+br.ufrgs.rmpestano.package3,org.osgi.framework;version="1.3.0"
+
+
