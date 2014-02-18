@@ -845,7 +845,6 @@
             <module>plugin-loader</module>
             <module>tracking</module>
             <module>dist</module>
-            <module>intrabundle</module>
          </modules>
       </profile>
 
